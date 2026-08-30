@@ -1,0 +1,10 @@
+spring:
+    application:
+        name: kimori-api
+firebase:
+    project-id: kimori-499114
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
