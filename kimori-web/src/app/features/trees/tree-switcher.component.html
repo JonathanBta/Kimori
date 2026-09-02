@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="header__brand">🌿 Kimori</div>
+
+  @if (state.loadingTrees()) {
+    <span class="header__status">Loading your trees…</span>
+  } @else if (state.trees().length === 0) {
+    <div class="header__empty">
+      <span>No trees yet.</span>
+      <button type="button" class="btn btn--primary" (click)="startCreateTree()">Create your first tree</button>
+    </div>
+  } @else {
+    <select class="header__select" [ngModel]="state.activeTreeId()" (ngModelChange)="onSelectTree($event)">
+      @for (tree of state.trees(); track tree.id) {
+        <option [value]="tree.id">{{ tree.name }}</option>
+      }
+    </select>
+
+    <button type="button" class="btn" (click)="startCreateTree()">+ New tree</button>
+    <button type="button" class="btn btn--primary" (click)="onAddPerson()" [disabled]="!state.activeTreeId()">
+      + Add person
+    </button>
+  }
+</header>
+
+@if (creatingTree()) {
+  <div class="modal-backdrop" (click)="cancelCreateTree()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h2>Create a new tree</h2>
+      <input
+        type="text"
+        placeholder="e.g. Smith Family"
+        [ngModel]="newTreeName()"
+        (ngModelChange)="newTreeName.set($event)"
+        (keyup.enter)="confirmCreateTree()"
+      />
+      <div class="modal__actions">
+        <button type="button" class="btn" (click)="cancelCreateTree()">Cancel</button>
+        <button type="button" class="btn btn--primary" (click)="confirmCreateTree()">Create</button>
+      </div>
+    </div>
+  </div>
+}

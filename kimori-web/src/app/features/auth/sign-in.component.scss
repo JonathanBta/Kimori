@@ -1,0 +1,41 @@
+.sign-in {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--kimori-green-100), var(--kimori-green-50));
+}
+
+.sign-in__card {
+  background: white;
+  border-radius: var(--kimori-radius-lg);
+  padding: var(--kimori-space-5);
+  text-align: center;
+  box-shadow: var(--kimori-shadow-md);
+
+  h1 {
+    color: var(--kimori-green-700);
+    margin-bottom: var(--kimori-space-2);
+  }
+}
+
+.btn--primary {
+  margin-top: var(--kimori-space-3);
+  padding: var(--kimori-space-2) var(--kimori-space-4);
+  border-radius: var(--kimori-radius-sm);
+  border: none;
+  background: var(--kimori-green-500);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.sign-in__error {
+  color: var(--kimori-danger);
+  margin-top: var(--kimori-space-2);
+}

@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+
+// FR-021: clean, modern, nature-inspired green design tokens used across the app.
+:root {
+  --kimori-green-50: #f1f8f2;
+  --kimori-green-100: #dcefe0;
+  --kimori-green-300: #8fcf9d;
+  --kimori-green-500: #3f9a5c;
+  --kimori-green-600: #2f7a47;
+  --kimori-green-700: #235c36;
+  --kimori-green-900: #123018;
+
+  --kimori-bark: #4a3b2a;
+  --kimori-cream: #faf7f0;
+  --kimori-ink: #1f2b22;
+  --kimori-danger: #b3452c;
+  --kimori-warning: #c98a1f;
+
+  --kimori-radius-sm: 6px;
+  --kimori-radius-md: 12px;
+  --kimori-radius-lg: 20px;
+
+  --kimori-space-1: 4px;
+  --kimori-space-2: 8px;
+  --kimori-space-3: 16px;
+  --kimori-space-4: 24px;
+  --kimori-space-5: 32px;
+
+  --kimori-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --kimori-shadow-sm: 0 1px 2px rgba(18, 48, 24, 0.08);
+  --kimori-shadow-md: 0 4px 16px rgba(18, 48, 24, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--kimori-font-family);
+  color: var(--kimori-ink);
+  background: var(--kimori-green-50);
+}

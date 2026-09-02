@@ -1,0 +1,25 @@
+.toast-tray {
+  position: fixed;
+  bottom: var(--kimori-space-4);
+  right: var(--kimori-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--kimori-space-2);
+  z-index: 100;
+}
+
+.toast {
+  padding: var(--kimori-space-2) var(--kimori-space-3);
+  border-radius: var(--kimori-radius-sm);
+  color: white;
+  cursor: pointer;
+  box-shadow: var(--kimori-shadow-md);
+
+  &--error {
+    background: var(--kimori-danger);
+  }
+
+  &--success {
+    background: var(--kimori-green-500);
+  }
+}

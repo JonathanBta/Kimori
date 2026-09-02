@@ -1,0 +1,39 @@
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--kimori-green-50);
+}
+
+.diagram-canvas {
+  display: block;
+}
+
+::ng-deep .diagram-link {
+  fill: none;
+  stroke: var(--kimori-green-300);
+  stroke-width: 2px;
+}
+
+::ng-deep .diagram-person rect {
+  fill: var(--kimori-cream);
+  stroke: var(--kimori-green-500);
+  stroke-width: 2px;
+}
+
+::ng-deep .diagram-person__name {
+  font-size: 12px;
+  fill: var(--kimori-ink);
+}
+
+.diagram-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--kimori-green-700);
+  text-align: center;
+  padding: var(--kimori-space-4);
+}

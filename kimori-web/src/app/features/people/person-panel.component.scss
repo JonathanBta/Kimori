@@ -1,0 +1,128 @@
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100vw);
+  background: white;
+  box-shadow: var(--kimori-shadow-md);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  animation: slide-in 0.15s ease-out;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--kimori-space-3) var(--kimori-space-4);
+  background: var(--kimori-green-600);
+  color: white;
+
+  h2 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+}
+
+.panel__close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.panel__body {
+  padding: var(--kimori-space-4);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--kimori-space-3);
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--kimori-space-1);
+    font-size: 0.85rem;
+    color: var(--kimori-green-700);
+
+    input, textarea {
+      padding: var(--kimori-space-2);
+      border-radius: var(--kimori-radius-sm);
+      border: 1px solid var(--kimori-green-300);
+      font-family: inherit;
+    }
+  }
+}
+
+.panel__hint {
+  color: #6b7c6f;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.panel__error {
+  color: var(--kimori-danger);
+  font-size: 0.85rem;
+}
+
+.panel__actions {
+  display: flex;
+  gap: var(--kimori-space-2);
+}
+
+.panel__section {
+  border-top: 1px solid var(--kimori-green-100);
+  padding-top: var(--kimori-space-3);
+
+  h3 {
+    margin: 0 0 var(--kimori-space-2);
+    color: var(--kimori-green-700);
+  }
+}
+
+.panel__file-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--kimori-space-1);
+}
+
+.link-btn {
+  border: none;
+  background: none;
+  color: var(--kimori-danger);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn {
+  padding: var(--kimori-space-2) var(--kimori-space-3);
+  border-radius: var(--kimori-radius-sm);
+  border: 1px solid var(--kimori-green-300);
+  background: white;
+  cursor: pointer;
+
+  &--primary {
+    background: var(--kimori-green-500);
+    color: white;
+    border-color: var(--kimori-green-500);
+  }
+
+  &--danger {
+    color: var(--kimori-danger);
+    border-color: var(--kimori-danger);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

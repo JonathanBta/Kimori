@@ -1,0 +1,12 @@
+<div class="sign-in">
+  <div class="sign-in__card">
+    <h1>🌿 Kimori</h1>
+    <p>Grow and explore your family tree.</p>
+    <button type="button" class="btn btn--primary" (click)="signIn()" [disabled]="signingIn()">
+      {{ signingIn() ? 'Signing in…' : 'Sign in with Google' }}
+    </button>
+    @if (errorMessage()) {
+      <p class="sign-in__error">{{ errorMessage() }}</p>
+    }
+  </div>
+</div>

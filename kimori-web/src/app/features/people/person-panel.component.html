@@ -1,0 +1,90 @@
+@if (isOpen()) {
+  <aside class="panel">
+    <header class="panel__header">
+      <h2>{{ isAddMode() ? 'Add person' : (state.selectedPerson()?.name || 'Person') }}</h2>
+      <button type="button" class="panel__close" (click)="close()" aria-label="Close">✕</button>
+    </header>
+
+    <div class="panel__body">
+      <label>
+        Name
+        <input type="text" [ngModel]="name()" (ngModelChange)="name.set($event)" />
+      </label>
+
+      <label>
+        Date of birth
+        <input type="date" [ngModel]="dateOfBirth()" (ngModelChange)="dateOfBirth.set($event)" />
+      </label>
+
+      <label>
+        Date of death
+        <input type="date" [ngModel]="dateOfDeath()" (ngModelChange)="dateOfDeath.set($event)" />
+      </label>
+
+      @if (!dateOfDeath()) {
+        <p class="panel__hint">Presumed living (no date of death recorded).</p>
+      }
+
+      <label>
+        Comments
+        <textarea rows="3" [ngModel]="comments()" (ngModelChange)="comments.set($event)"></textarea>
+      </label>
+
+      @if (validationError()) {
+        <p class="panel__error">{{ validationError() }}</p>
+      }
+
+      <div class="panel__actions">
+        <button type="button" class="btn btn--primary" (click)="save()" [disabled]="saving()">
+          {{ saving() ? 'Saving…' : 'Save' }}
+        </button>
+        @if (!isAddMode()) {
+          <button type="button" class="btn btn--danger" (click)="deletePerson()">Delete person</button>
+        }
+      </div>
+
+      @if (!isAddMode() && state.selectedPerson(); as person) {
+        <section class="panel__section">
+          <h3>Picture</h3>
+          @if (person.pictureUrl) {
+            <div class="panel__file-row">
+              <span>Picture uploaded</span>
+              <button type="button" class="link-btn" (click)="removePicture()">Remove</button>
+            </div>
+          }
+          <input type="file" accept="image/jpeg,image/png,image/webp" (change)="onPictureSelected($event)" />
+          @if (uploadingPicture()) {
+            <p class="panel__hint">Uploading picture…</p>
+          }
+        </section>
+
+        <section class="panel__section">
+          <h3>Certificates</h3>
+          <div class="panel__file-row">
+            <span>Birth certificate {{ person.birthCertificateUrl ? '(uploaded)' : '(none)' }}</span>
+            @if (person.birthCertificateUrl) {
+              <button type="button" class="link-btn" (click)="removeCertificate('birth')">Remove</button>
+            }
+          </div>
+          <input type="file" accept="application/pdf" (change)="onCertificateSelected('birth', $event)" />
+          @if (uploadingCertificate() === 'birth') {
+            <p class="panel__hint">Uploading birth certificate…</p>
+          }
+
+          <div class="panel__file-row">
+            <span>Death certificate {{ person.deathCertificateUrl ? '(uploaded)' : '(none)' }}</span>
+            @if (person.deathCertificateUrl) {
+              <button type="button" class="link-btn" (click)="removeCertificate('death')">Remove</button>
+            }
+          </div>
+          <input type="file" accept="application/pdf" (change)="onCertificateSelected('death', $event)" />
+          @if (uploadingCertificate() === 'death') {
+            <p class="panel__hint">Uploading death certificate…</p>
+          }
+        </section>
+
+        <app-relationship-editor [personId]="person.id" />
+      }
+    </div>
+  </aside>
+}

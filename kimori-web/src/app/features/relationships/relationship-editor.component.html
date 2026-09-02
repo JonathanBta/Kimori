@@ -1,0 +1,37 @@
+<section class="relationships">
+  <h3>Relationships</h3>
+
+  @if (relatedRelationships().length === 0) {
+    <p class="relationships__empty">No relationships recorded yet.</p>
+  } @else {
+    <ul class="relationships__list">
+      @for (r of relatedRelationships(); track r.id) {
+        <li>
+          <span>{{ describe(r) }}</span>
+          <button type="button" class="link-btn" (click)="removeLink(r.id)">Remove</button>
+        </li>
+      }
+    </ul>
+  }
+
+  <div class="relationships__form">
+    <select [ngModel]="linkKind()" (ngModelChange)="linkKind.set($event)">
+      <option value="PARENT_OF">Is the parent of…</option>
+      <option value="CHILD_OF">Is the child of…</option>
+      <option value="COUPLE">Is a couple with…</option>
+    </select>
+
+    <select [ngModel]="otherPersonId()" (ngModelChange)="otherPersonId.set($event)">
+      <option [ngValue]="null">Select a person…</option>
+      @for (p of otherPeople(); track p.id) {
+        <option [value]="p.id">{{ p.name }}</option>
+      }
+    </select>
+
+    <button type="button" class="btn btn--primary" (click)="addLink()">Link</button>
+  </div>
+
+  @if (errorMessage()) {
+    <p class="relationships__error">{{ errorMessage() }}</p>
+  }
+</section>

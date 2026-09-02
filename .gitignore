@@ -1,0 +1,32 @@
+# Java / Maven (kimori-api)
+kimori-api/target/
+*.class
+*.jar
+
+# Node / Angular (kimori-web)
+kimori-web/node_modules/
+kimori-web/dist/
+kimori-web/.angular/
+npm-debug.log*
+
+# Environment/secrets
+.env
+.env.*
+*.pem
+serviceAccountKey*.json
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# IDE / OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp

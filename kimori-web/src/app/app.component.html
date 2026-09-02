@@ -1,0 +1,9 @@
+﻿<router-outlet />
+
+<div class="toast-tray">
+  @for (n of notifications(); track n.id) {
+    <div class="toast" [ngClass]="'toast--' + n.kind" (click)="dismiss(n.id)">
+      {{ n.message }}
+    </div>
+  }
+</div>
